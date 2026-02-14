@@ -1,0 +1,50 @@
+---
+import styles from "./menu.module.css"
+import MenuClient from "./react/menuClient.jsx"
+---
+
+
+<nav role="navigation" class={styles.container_nav}>
+    
+    <MenuClient client:load> </MenuClient>
+    
+    <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_fotografia", >
+        Fotografia
+        <div class={styles.dropdown_content_header} role="menu"  id="menu_fotografia">
+            <ul class={styles.list_header}>
+                <li role="menuitem">
+                    <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/science" class="dropdown-link-header">Science</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/history" class="dropdown-link-header">History</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_narrativa">
+        Fotografia
+        <div class={styles.dropdown_content_header}  role="menu"  id="menu_narrativa">
+            <ul class={styles.list_header}>
+                <li role="menuitem">
+                    <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/science" class="dropdown-link-header">Science</a>
+                </li>
+                <li role="menuitem">
+                    <a href="/photography/history" class="dropdown-link-header">History</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,49 @@
+.container_nav{
+  display: flex;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.categories_header{
+  margin: 0px 20px;
+}
+
+.list_header {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-gray);
+  min-width: 10vw;
+  margin:0px;
+  padding:0px;
+  align-content:center;
+  text-align: right;
+  border-radius: 0px 0px 50px 50px;
+}
+
+.list_header li {
+  min-height: 5vh;
+  padding: 0px 20px;
+  vertical-align: middle;
+  align-content: center;
+}
+
+.list_header li:hover {
+  background-color: var(--color-blue);
+}
+
+.dropdown_content_header {
+  display: none;
+  position: absolute;
+  background-color: var(--color-gray);
+  z-index: 1;
+}
+
+.categories_header:hover .dropdown_content_header {
+  display: block;
+
+}
+
+.categories_header:last-of-type .dropdown_content_header{
+  right: 0;
+}
