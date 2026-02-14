@@ -1,0 +1,62 @@
+---
+import styles from './Header.module.css';
+import HeaderClient from "./react/HeaderClient.jsx"
+---
+
+<header class={styles.container_header}>
+    <HeaderClient client:load></HeaderClient>
+    
+    <div class={styles.container_logo}>
+        <a href="/" class="header-link">
+            <h1 class="header-title">Ekoo Reiji - エコー零時</h1>
+        </a>
+    </div>
+
+    <nav role="navigation" class={styles.container_nav}>
+        
+        <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_fotografia", >
+            Fotografia
+            <div class={styles.dropdown_content_header} role="menu"  id="menu_fotografia">
+                <ul class={styles.list_header}>
+                    <li role="menuitem">
+                        <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/science" class="dropdown-link-header">Science</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/history" class="dropdown-link-header">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_narrativa">
+            Fotografia
+            <div class={styles.dropdown_content_header}  role="menu"  id="menu_narrativa">
+                <ul class={styles.list_header}>
+                    <li role="menuitem">
+                        <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/science" class="dropdown-link-header">Science</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/history" class="dropdown-link-header">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<script is:inline>
+    {initDropdown()}
+</script>
