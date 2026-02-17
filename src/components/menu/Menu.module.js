@@ -1,55 +1,82 @@
-function resetAllParents(ListParents){
-  ListParents.forEach(element => {
-    let expand = element.getAttribute("aria-expanded")
-    if (expand === "true"){
-      element.setAttribute("aria-expanded", "false")
-    }
-  });
-}
-
-function checkMobileSize(){
-  const sizeMobile = 1007
-  return window.innerWidth <= sizeMobile
+function checkMobileSize() {
+  const sizeMobile = 1007;
+  return window.innerWidth <= sizeMobile;
 }
 
 
-function updateAccessibly(menuElement, listParents) {
-  const toggleExpand = (el, state) => el.setAttribute(
-    "aria-expanded", state ? "true" : "false"
+const changeExpand = (element, newState) => {
+  element.setAttribute(
+    "aria-expanded", newState ? "true" : "false"
   );
+}
 
-  menuElement.addEventListener("click", () => {
+
+const getElementMenu = (element, event) => {
+  return event.target.closest(`${element}[aria-expanded]`);
+}
+
+
+const closeElementOpen = (parentElement, element) => {
+  const listOpened = document.querySelectorAll(`${parentElement}[aria-expanded='true']`);
+  listOpened.forEach(
+    opened => {if (opened && opened !== element) changeExpand(opened, false)}
+  );
+}
+
+function HandlerEvents(container, parentElement){
+  if (!container) return;
+
+  // Clique com mouse
+  container.addEventListener("click", (event) => {
+    const menuElement = getElementMenu(parentElement, event)
+    if (!menuElement) return;
 
     const expand = menuElement.getAttribute("aria-expanded") === "true";
-    resetAllParents(listParents);
-    toggleExpand(menuElement, !expand);
+    closeElementOpen(parentElement, menuElement)
+    changeExpand(menuElement, !expand);
   });
 
-  menuElement.addEventListener("mouseenter", () => {
-    if (!checkMobileSize()) {
-      resetAllParents(listParents);
-      toggleExpand(menuElement, true);
-    }
-  });
+  // Hover com mouse
+  container.addEventListener("mouseenter", (event) => {
+    if (checkMobileSize()) return;
 
-  menuElement.addEventListener("mouseleave", () => {
-    if (!checkMobileSize()) {
-      resetAllParents(listParents);
-      toggleExpand(menuElement, false);
-    }
+    const menuElement = getElementMenu(parentElement, event)
+    if (!menuElement) return;
 
+    closeElementOpen(parentElement, menuElement)
+    changeExpand(menuElement, true)
+  }, true);
+
+  container.addEventListener("mouseleave", (event) => {
+    if (checkMobileSize()) return;
+
+    const menuElement = getElementMenu(parentElement, event)
+    if (!menuElement) return;
+
+    changeExpand(menuElement, false);
+  }, true);
+
+  // Suporte a teclado (Enter ou Espaço)
+  container.addEventListener("keydown", (event) => {
+    const menuElement = getElementMenu(parentElement, event)
+    if (!menuElement) return;
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault(); // evita scroll com espaço
+      const expand = menuElement.getAttribute("aria-expanded") === "true";
+      closeElementOpen(parentElement, menuElement)
+      changeExpand(menuElement, !expand)
+    }
   });
 }
 
 
-function ControllerMenuInteractive(menu_selector){
+function ControllerMenuInteractive(menu_selector) {
+  const element = `.${menu_selector}`
+  const listContainer = document.querySelectorAll(element);
   
-  const listMenu = document.querySelectorAll(
-    `.${menu_selector}`
-  );
-  listMenu.forEach(el => updateAccessibly(el, listMenu));
+  listContainer.forEach(el => HandlerEvents(el, element))
 }
-
 
 export function MenuController(list_menu_points) {
   list_menu_points.forEach(el => ControllerMenuInteractive(el));

@@ -20,38 +20,47 @@
   transition: transform 3s ease;
 }
 
-[aria-expanded="false"] > .icon_humburguer path:nth-child(1){
+.container_menu_hamburger[aria-expanded="false"] > .icon_humburguer path:nth-child(1){
   transition: transform 0.5s ease;
   transform: rotate(0deg) translate(0px, 0px) scale(1);
 }
 
-[aria-expanded="false"] > .icon_humburguer path:nth-child(2){
+.container_menu_hamburger[aria-expanded="false"] > .icon_humburguer path:nth-child(2){
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
 }
 
-[aria-expanded="false"] > .icon_humburguer path:last-child{
+.container_menu_hamburger[aria-expanded="false"] > .icon_humburguer path:last-child{
   transition: transform 0.5s ease;
   transform: rotate(0deg) translate(0px, 0px) scale(1);
 }
 
-[aria-expanded="true"] > .icon_humburguer:hover path:nth-child(1){
+.container_menu_hamburger[aria-expanded="true"] > .icon_humburguer path:nth-child(1){
   transform: rotate(-45deg) translate(-22px, 10px) scale(1.2);
   transition: transform 0.5s ease;
 }
 
-[aria-expanded="true"] > .icon_humburguer:hover path:nth-child(2){
+.container_menu_hamburger[aria-expanded="true"] > .icon_humburguer path:nth-child(2){
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
 
-[aria-expanded="true"] > .icon_humburguer:hover path:last-child{
+.container_menu_hamburger[aria-expanded="true"] > .icon_humburguer path:last-child{
   transform: rotate(45deg) translate(0px, -25px) scale(1.2);
   transition: transform 0.5s ease;
 }
 
 .categories_header{
   margin: 0px 20px;
+}
+
+.categories_header{
+  cursor: pointer;
+}
+
+.categories_header[aria-expanded="true"] .dropdown_content_header{
+  margin-top: -15px;
+  padding-top: 20px;
 }
 
 .list_header {
@@ -88,7 +97,7 @@
 }
 
 
-[aria-expanded="true"] .dropdown_content_header{
+.categories_header[aria-expanded="true"] .dropdown_content_header{
   display: block;
   max-height: 1000px;
 }
@@ -135,7 +144,11 @@
     margin: 0;
     padding: 0;
     width: 100%;
+  }
 
+  .categories_header[aria-expanded="true"] .dropdown_content_header{
+    margin-top: 0px;
+    padding-top: 0px;
   }
 
   .categories_header p{
@@ -143,7 +156,8 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
+    min-height: 60px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -154,7 +168,7 @@
     right: auto;
   }
 
-  [aria-expanded="true"]{
+  .categories_header[aria-expanded="true"]{
     background-color: var(--color-blue);
   }
   
