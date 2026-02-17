@@ -6,45 +6,59 @@ import MenuClient from "./react/menuClient.jsx"
 
 <nav role="navigation" class={styles.container_nav}>
     
-    <MenuClient client:load> </MenuClient>
+    <MenuClient 
+        client:load 
+        listClassMenus={[styles.categories_header, styles.container_menu_hamburger]}
+    > </MenuClient>
     
-    <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_fotografia", >
-        Fotografia
-        <div class={styles.dropdown_content_header} role="menu"  id="menu_fotografia">
-            <ul class={styles.list_header}>
-                <li role="menuitem">
-                    <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/science" class="dropdown-link-header">Science</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/history" class="dropdown-link-header">History</a>
-                </li>
-            </ul>
-        </div>
+    <div class={styles.container_menu_hamburger} aria-haspopup="menu" aria-expanded="false" aria-controls="hamburger_menu">
+        <svg class={styles.icon_humburguer} id="hamburger_menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+            <path d="M 4 7 L 4 9 L 28 9 L 28 7 Z " style=""/>
+            <path d="M 4 15 L 4 17 L 28 17 L 28 15 Z "/>
+            <path d="M 4 23 L 4 25 L 28 25 L 28 23 Z"/>
+        </svg>
     </div>
+    
+    <div class={styles.container_categories_menu}>
+        
+        <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_fotografia", >
+            <p>Fotografia</p>
+            <div class={styles.dropdown_content_header} role="menu"  id="menu_fotografia">
+                <ul class={styles.list_header}>
+                    <li role="menuitem">
+                        <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/science" class="dropdown-link-header">Science</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/history" class="dropdown-link-header">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_narrativa">
-        Fotografia
-        <div class={styles.dropdown_content_header}  role="menu"  id="menu_narrativa">
-            <ul class={styles.list_header}>
-                <li role="menuitem">
-                    <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/science" class="dropdown-link-header">Science</a>
-                </li>
-                <li role="menuitem">
-                    <a href="/photography/history" class="dropdown-link-header">History</a>
-                </li>
-            </ul>
+        <div class={styles.categories_header} aria-haspopup="menu" aria-expanded="false" aria-controls="menu_narrativa">
+            <p>Fotografia</p>
+            <div class={styles.dropdown_content_header}  role="menu"  id="menu_narrativa">
+                <ul class={styles.list_header}>
+                    <li role="menuitem">
+                        <a href="/photography/fiction" class="dropdown-link-header">Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/non-fiction" class="dropdown-link-header">Non-Fiction</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/science" class="dropdown-link-header">Science</a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="/photography/history" class="dropdown-link-header">History</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

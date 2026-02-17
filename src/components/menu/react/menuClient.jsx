@@ -1,11 +1,12 @@
 /** @jsxImportSource react */
 
 import { useEffect } from "react";
-import { initDropdown } from "../Menu.module.js";
+import { MenuController } from "../Menu.module.js";
 
-export default function MenuClient() {
+export default function MenuClient({ listClassMenus }) {
   useEffect(() => {
-    initDropdown(`._categories_header_u6gqi_51`);
+    console.log(listClassMenus)
+    MenuController(listClassMenus);
   }, []);
   return null;
 }
