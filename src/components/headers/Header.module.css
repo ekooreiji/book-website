@@ -8,6 +8,7 @@
   align-items: center;
   vertical-align: middle;
   align-content: center;
+  background-color: var(--color-gray);
   text-align: center;
   font-family: var(--font-family-base);
 

@@ -3,11 +3,13 @@
   --color-white: #ffffff;
   --color-gray: #1A1818;
   --color-blue: #28446B;
-  --color-background: #111111;
+  --color-background: #0e0e0e;
   --color-text: #ffffff;
   --font-family-base: "Kotta One", 'serif', 'Arial Unicode MS';
   --font-size-base: 16px;
   --spacing-base: 1rem;
+  --transition-fast: 0.3s ease-in-out;
+  --transition-normal: 0.5s ease;
 }
 
 body {
